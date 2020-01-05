@@ -87,6 +87,8 @@ public class Lab4
   }
   
   public static int connectivity() {
+      //pre-con. Robot is on an arbitrary dark square of a connect-the-dots map
+      //post-con. Returns the direction in which the next dot is (1/2/3 → straight/left/right)
       for (int dir=0; dir<=2; dir++) {
         int step = 0;
         boolean dark = false;
@@ -102,7 +104,7 @@ public class Lab4
             for (int i=1; i<=(dir%2); i++) {turnRight();}
             return dir;
         }
-        for (int i=1; i<=(dir%2)+1; i++) {Robot.turnLeft();}
+        for (int i=1; i<=(dir%2)+1; i++) {Robot.turnLeft();} //turns 90°/180°/(90°)
       }
       return 4;
     }
@@ -110,7 +112,7 @@ public class Lab4
   {
     //insert instructions below
     while (true) {
-        int con = connectivity();
+        int con = connectivity(); //connectivity() only has to run once per loop
         if (con == 4) {break;}
         for (int i=1; i<(con%2)+1; i++) {Robot.turnLeft();}
         for (int step=1; step<=2; step++) {
